@@ -38,8 +38,8 @@ export default function Login() {
         <section className="container-title">
           <h2>Sign In</h2>
           <p>
-            iRecipes é um aplicativo de receitas para quem gosta
-            de se aventurar em casa e aprender a cozinhar como um chef.
+            iRecipes is a recipe app for anyone who likes
+            to venture out at home and learn to cook like a chef.
           </p>
         </section>
         <label>

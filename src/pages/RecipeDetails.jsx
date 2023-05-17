@@ -82,8 +82,6 @@ function RecipeDetails() {
     copy(window.location.href);
   };
 
-  // [{ id, type, nationality, category, alcoholicOrNot, name, image }]
-
   const favoriteRecipe = () => {
     const recipeToSave = {
       id: recipeDetails[`id${name}`],

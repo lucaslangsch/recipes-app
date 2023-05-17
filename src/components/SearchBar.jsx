@@ -12,7 +12,7 @@ export default function SearchBar() {
       <div className="search-input">
         <input
           data-testid="search-input"
-          placeholder="Digite sua Busca..."
+          placeholder="Enter your search"
           value={ inputValue }
           onChange={ ({ target }) => setInputValue(target.value) }
         />

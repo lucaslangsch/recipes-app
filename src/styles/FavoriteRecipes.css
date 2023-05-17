@@ -8,6 +8,7 @@ ul {
   max-width: 280px;
 }
 
+
 .categoriesButton {
   display: flex;
   flex-wrap: wrap;
@@ -71,6 +72,28 @@ ul {
   position: absolute;
   text-align: center;
   width: 260px;
+}
+@media only screen and ( min-width : 1024px ) {
+  .card-containe a img {
+    max-width: 320px;
+  }
+
+  .recipe-containe ul {
+    gap: 60px;
+  }
+
+  .recipe-containe ul {
+    width: 80vw;
+  }
+
+  .card-containe {
+    width: 300px;
+  }
+
+  .card-nome {
+
+    width: 300px;
+  }
 }
 
 .card-contente {

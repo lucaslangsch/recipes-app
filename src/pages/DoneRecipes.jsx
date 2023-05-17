@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { BsCheck } from 'react-icons/bs';
+import moment from 'moment';
 import buttonClipeBoard from '../components/buttonClipeBoard';
 import Header from '../components/Header';
 import '../styles/FavoriteRecipes.css';
@@ -9,80 +10,34 @@ import all from '../images/all.svg';
 import category0 from '../images/beef.svg';
 import drink0 from '../images/ordinary.svg';
 import Footer from '../components/Footer';
+import { getRecipesFinished } from '../helpers/localStorage';
 
 function DoneRecipes() {
   const [doneRecipes, setDoneRecipes] = useState([]);
   const [shared, setShared] = useState(false);
-  const date = '23/06/2020';
 
   useEffect(() => {
-    const MockLocalStorage = [
-      {
-        id: '52771',
-        type: 'meal',
-        nationality: 'Italian',
-        category: 'Vegetarian',
-        alcoholicOrNot: '',
-        name: 'Spicy Arrabiata Penne',
-        image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
-        doneDate: date,
-        tags: ['Pasta', 'Curry'],
-      },
-      {
-        id: '178319',
-        type: 'drink',
-        nationality: '',
-        category: 'Cocktail',
-        alcoholicOrNot: 'Alcoholic',
-        name: 'Aquamarine',
-        image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
-        doneDate: date,
-        tags: [],
-      },
-    ];
-
-    setDoneRecipes(MockLocalStorage);
+    const doneRecipesFromLocal = getRecipesFinished();
+    setDoneRecipes(doneRecipesFromLocal);
   }, []);
 
   const FilterRecipes = (type) => {
-    const MockLocalStorage = [
-      {
-        id: '52771',
-        type: 'meal',
-        nationality: 'Italian',
-        category: 'Vegetarian',
-        alcoholicOrNot: '',
-        name: 'Spicy Arrabiata Penne',
-        image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
-        doneDate: date,
-        tags: ['Pasta', 'Curry'],
-      },
-      {
-        id: '178319',
-        type: 'drink',
-        nationality: '',
-        category: 'Cocktail',
-        alcoholicOrNot: 'Alcoholic',
-        name: 'Aquamarine',
-        image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
-        doneDate: date,
-        tags: [],
-      },
-    ];
-
     switch (type) {
     case 'meals': {
-      const Filtered = MockLocalStorage.filter((recipe) => recipe.type === 'meal');
+      const doneRecipesFromLocal = getRecipesFinished();
+      const Filtered = doneRecipesFromLocal.filter((recipe) => recipe.type === 'meal');
       setDoneRecipes(Filtered);
       break;
     }
     case 'drinks': {
-      const Filtered = MockLocalStorage.filter((recipe) => recipe.type === 'drink');
+      const doneRecipesFromLocal = getRecipesFinished();
+      const Filtered = doneRecipesFromLocal.filter((recipe) => recipe.type === 'drink');
       setDoneRecipes(Filtered);
     }
       break;
     default: {
-      setDoneRecipes(MockLocalStorage);
+      const doneRecipesFromLocal = getRecipesFinished();
+      setDoneRecipes(doneRecipesFromLocal);
       break;
     }
     }
@@ -144,7 +99,7 @@ function DoneRecipes() {
                       <span
                         data-testid={ `${index}-horizontal-done-date` }
                       >
-                        {recipe.doneDate}
+                        {moment(recipe.doneDate).format('DD/MM/YYYY')}
 
                       </span>
                     </div>
