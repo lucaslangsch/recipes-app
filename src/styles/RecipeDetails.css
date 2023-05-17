@@ -55,8 +55,8 @@
 }
 
 .details-video {
-  height: 70vw;
-  width: 88vw;
+  height: 40vw;
+  width: 70vw;
 }
 
 .slider-image {
@@ -154,6 +154,11 @@ button:disabled {
 
   .sub-details > img {
     display: none;
+  }
+
+  .details-video {
+    height: 70vw;
+    width: 88vw;
   }
 }
 
