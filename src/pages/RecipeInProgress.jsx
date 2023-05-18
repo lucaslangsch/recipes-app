@@ -82,20 +82,20 @@ function RecipeInProgress() {
     setFavorite(true);
   };
 
-  const callGetRecipes = () => {
-    const getFavorite = getRecipes();
-    const isFavorite = getFavorite.some((recipe) => recipe
-      .id === recipeDetails[`id${mealOrDrink}`]);
-    setFavorite(isFavorite);
-  };
   useEffect(() => {
+    const callGetRecipes = () => {
+      const getFavorite = getRecipes();
+      const isFavorite = getFavorite.some((recipe) => recipe
+        .id === recipeDetails[`id${mealOrDrink}`]);
+      setFavorite(isFavorite);
+    };
     callGetRecipes();
     if (ingredients.length === selectedItems.length) {
       setFinishRecipe(true);
     } else {
       setFinishRecipe(false);
     }
-  });
+  }, [selectedItems, ingredients.length, mealOrDrink, recipeDetails]);
 
   const unfavoriteRecipe = () => {
     removeRecipes(recipeDetails[`id${mealOrDrink}`]);

@@ -63,7 +63,7 @@ function RecipeDetails() {
       console.log(getInProgress[nameForInProgress][recipeDetails[`id${name}`]]);
       setRecipesInProgress(getInProgress[nameForInProgress][recipeDetails[`id${name}`]]);
     }
-  }, [recipeDetails]);
+  }, [recipeDetails, name, nameForInProgress]);
 
   useEffect(() => {
     if (pathname.includes('/drinks')) {
